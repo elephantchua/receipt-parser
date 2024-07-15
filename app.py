@@ -12,10 +12,14 @@ api_key = st.secrets["api_key"]
 def print_receipt(receipt_dict):
     description, quantity, total = st.columns(3)
 
+    description.write("Item")
+    quantity.write("Quantity")
+    total.write("Price")
+
     for i in range(len(receipt_dict['items'])):
         description.write(f"{i}: {receipt_dict['items'][i]['description']}")
         quantity.write(f"{receipt_dict['items'][i]['quantity']}")
-        total.write(f"{receipt_dict['items'][i]['total']}")
+        total.write(f"${receipt_dict['items'][i]['total']}")
         
     st.write("##")
     st.write(f"Subtotal: {receipt_dict['subtotal']}")
