@@ -3,7 +3,6 @@ import tempfile
 from main import processing_receipt, calculating_receipt
 import os
 
-
 client_id = st.secrets["client_id"]
 client_secret = st.secrets["client_secret"]
 username = st.secrets["username"]
@@ -60,7 +59,6 @@ def calculate_per_person(receipt_dict, person_number):
     st.write(f"Fee(s): {round(total_cost * fee_per_dollar, 2)}")
     st.write(f"Total cost for selected items after fee(s): {round(total_cost * (fee_per_dollar + 1), 2)}")
 
-
 def main():
     st.set_page_config(page_title="Receipt Parser", layout="centered")
 
@@ -75,7 +73,7 @@ def main():
             temp_file.write(file.read())
             temp_file_path = temp_file.name
 
-        response = processing_receipt(client_id, client_secret, username, api_key, file)
+        response = processing_receipt(client_id, client_secret, username, api_key, temp_file_path)
 
         receipt_dict = calculating_receipt(response)
 
