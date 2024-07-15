@@ -6,7 +6,6 @@ def processing_receipt(client_id, client_secret, username, api_key, file):
     response = veryfi_client.process_document(file, categories=categories)
     return response
 
-
 def calculating_receipt(response):
     receipt_dict = {}
 
@@ -22,13 +21,16 @@ def calculating_receipt(response):
 
     receipt_dict['subtotal'] = float(response['subtotal'])
 
-    if float(response['tax']) != float(response['tax_lines'][0]['total']):
+    if len(response['tax_lines']) and float(response['tax']) != float(response['tax_lines'][0]['total']):
         receipt_dict['tax & other fees'] = float(response['tax']) + float(response['tax_lines'][0]['total'])
+    else:
+        receipt_dict['tax & other fees'] = float(response['tax'])
 
     if response['tip'] is not None:
         receipt_dict['tip'] = float(response['tip'])
     else:
         receipt_dict['tip'] = 0
+
     receipt_dict['total'] = float(response['total'])
 
     return receipt_dict
