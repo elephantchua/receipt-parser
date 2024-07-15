@@ -1,14 +1,6 @@
 from veryfi import Client
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
-client_id = os.getenv('client_id')
-client_secret = os.getenv('client_secret')
-username = os.getenv('username')
-api_key = os.getenv('api_key')
-
-def processing_receipt(file):
+def processing_receipt(client_id, client_secret, username, api_key, file):
     veryfi_client = Client(client_id, client_secret, username, api_key)
     categories = ['Grocery', 'Food']
     response = veryfi_client.process_document(file, categories=categories)

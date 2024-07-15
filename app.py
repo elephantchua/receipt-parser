@@ -1,6 +1,21 @@
 import streamlit as st
 import tempfile
 from main import processing_receipt, calculating_receipt
+import os
+from dotenv import load_dotenv
+
+"""
+load_dotenv()
+client_id = os.getenv('client_id')
+client_secret = os.getenv('client_secret')
+username = os.getenv('username')
+api_key = os.getenv('api_key')
+"""
+
+client_id = st.secrets["client_id"]
+client_secret = st.secrets["client_secret"]
+username = st.secrets["username"]
+api_key = st.secrets["api_key"]
 
 @st.cache_data
 def print_receipt(receipt_dict):

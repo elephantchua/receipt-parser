@@ -1,3 +1,4 @@
 .env
 test.ipynb
 Test-images/*
+_pycache_/*
