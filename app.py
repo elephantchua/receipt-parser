@@ -81,11 +81,11 @@ def main():
 
         receipt_dict = calculating_receipt(response)
 
-        st.write('### Item list:')
+        st.write('### Item list')
         print_receipt(receipt_dict)
 
-        st.write('### Splitter:')
         st.write('######')
+        st.write('### Splitter')
         num_people = st.number_input('Number of people in the party:', min_value=0, step=1, value=0, key='num_people')
         for person_number in range(1, num_people + 1):
             calculate_per_person(receipt_dict, person_number)
