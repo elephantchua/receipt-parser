@@ -62,7 +62,7 @@ def main():
     file = st.file_uploader("Upload an image of your receipt", type=["jpg", "png", "jpeg", "HEIC"])
 
     if file is None:
-        st.text("Error: Upload an image file only")
+        st.text("File Uploaded: None")
     else:
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
             temp_file.write(file.read())
