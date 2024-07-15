@@ -2,3 +2,4 @@
 test.ipynb
 Test-images/*
 _pycache_/*
+.streamlit/*
