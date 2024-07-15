@@ -21,7 +21,7 @@ def print_receipt(receipt_dict):
         quantity.write(f"{receipt_dict['items'][i]['quantity']}")
         total.write(f"${receipt_dict['items'][i]['total']}")
         
-    st.write("##")
+    st.write('######')
     st.write(f"Subtotal: {receipt_dict['subtotal']}")
     st.write(f"Tax & other fees: {receipt_dict['tax & other fees']}")
     st.write(f"Tip: {receipt_dict['tip']}")
@@ -84,7 +84,7 @@ def main():
         st.write('Item list:')
         print_receipt(receipt_dict)
 
-        st.write('##')
+        st.write('######')
         num_people = st.number_input('Number of people in the party:', min_value=0, step=1, value=0, key='num_people')
         for person_number in range(1, num_people + 1):
             calculate_per_person(receipt_dict, person_number)
