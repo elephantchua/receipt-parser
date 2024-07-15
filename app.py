@@ -2,15 +2,7 @@ import streamlit as st
 import tempfile
 from main import processing_receipt, calculating_receipt
 import os
-from dotenv import load_dotenv
 
-"""
-load_dotenv()
-client_id = os.getenv('client_id')
-client_secret = os.getenv('client_secret')
-username = os.getenv('username')
-api_key = os.getenv('api_key')
-"""
 
 client_id = st.secrets["client_id"]
 client_secret = st.secrets["client_secret"]
@@ -83,7 +75,8 @@ def main():
             temp_file.write(file.read())
             temp_file_path = temp_file.name
 
-        response = processing_receipt(temp_file_path)
+        response = processing_receipt(client_id, client_secret, username, api_key, file)
+
         receipt_dict = calculating_receipt(response)
 
         st.write('Item list:')
